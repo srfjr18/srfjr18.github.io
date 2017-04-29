@@ -68,26 +68,14 @@ Description: Turn multiple scripts or commands into one easy to use bash script 
 Name: Option Compiler
 
 Package: com.srfjr18.repomanager
-Version: 1.4.5
+Version: 1.5.1
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: curl, coreutils, com.srfjr18.scanpackages, org.coolstar.perl, git, wget, org.thebigboss.cacerts, grep, sed, expat
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.repomanager_1.4.5_iphoneos-arm.deb
-Size: 2322
-MD5sum: 8df9885113ea555fca8dbca1fd20f0b4
-Description: Make your own Cydia repo and easily manage it using this script! Run repo in terminal for help.
-Name: Repo Manager
-
-Package: com.srfjr18.repomanager
-Version: 1.5
-Section: Utilities
-Maintainer: srfjr18 <srfjr18@gmail.com>
-Depends: curl, coreutils, com.srfjr18.scanpackages, org.coolstar.perl, git, wget, org.thebigboss.cacerts, grep, sed, expat
-Architecture: iphoneos-arm
-Filename: ./com.srfjr18.repomanager_1.5_iphoneos-arm.deb
-Size: 2308
-MD5sum: 038eb2d85fae7fb69a393c048e700841
+Filename: ./com.srfjr18.repomanager_1.5.1_iphoneos-arm.deb
+Size: 2344
+MD5sum: f8f2a67253a675a4c589829b74f5ec19
 Description: Make your own Cydia repo and easily manage it using this script! Run repo in terminal for help.
 Name: Repo Manager
 
