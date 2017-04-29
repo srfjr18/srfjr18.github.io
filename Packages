@@ -1,0 +1,105 @@
+Package: com.srfjr18.appduplicator
+Version: 1.0
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.appduplicator_1.0_iphoneos-arm.deb
+Size: 1770
+MD5sum: 42f7f9d78e115ba0bb0d7b03dfd494a6
+Description: Run duplicate in terminal to duplicate any app you currently have installed. Issues with this script: Apps have to be duplicated to /Applications. As a result, space in the root partition is used. A symlink method similar to coolstar's stashing is used to minimize space used. However, for many apps, the CFBundleExecutable file is large in size. This file cannot be symlinked. Also, some duplicated apps may crash. Lastly, keep in mind deleting original app will break the duplicate app due to the symlink system.
+Name: App Duplicator
+
+Package: com.srfjr18.bashcasino
+Version: 1.1.3
+Section: Games
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.bashcasino_1.1.3_iphoneos-arm.deb
+Size: 3740
+MD5sum: 3108ffe7b3e1ff3f5fd15bc60be7fbf2
+Description: No casinos near you? Too young to gamble? Don't have any actual money to gamble? Bash Casino has got you covered. Gamble all the virtual money you want in probably one of the worst bash script games ever created. Run bashcasino in terminal.
+Name: Bash Casino
+
+Package: com.srfjr18.commandsetupmanager
+Version: 1.5.5
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Conflicts: com.srfjr18.widgetmodifier
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.commandsetupmanager_1.5.5_iphoneos-arm.deb
+Size: 3906
+MD5sum: 4002c8ad60631dfc0d845e3e4f9f6bc5
+Description: Bash script to quickly change/save "setups." Currently, this script will change/save theme preferences, iwidget setups, and icon layouts. Run "setupmanager" in terminal for options.
+Name: Setup Manager
+
+Package: com.srfjr18.custommtwo
+Version: 1.0
+Section: Widgets
+Maintainer: None <notarealemail@gmail.com>
+Depends: com.eldwin.iwidgets
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.custommtwo_1.0_iphoneos-arm.deb
+Size: 492850
+MD5sum: a59c015721fed26e0e1a392c73b5723b
+Description: Modified weather iWidget from the M2 pack.
+Name: Custom M2 iWidgets
+
+Package: com.srfjr18.ipabuilder
+Version: 1.1
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: coreutils
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.ipabuilder_1.1_iphoneos-arm.deb
+Size: 1016
+MD5sum: 7c3734e364b8496212664cf3ce3e95f2
+Description: Creates .ipa files from .app bundles. Place your .app bundles into /var/mobile/ipa, then run ipabuild in terminal. These IPA files can be sideloaded with impactor or installed with appsync.
+Name: IPA Builder
+
+Package: com.srfjr18.optioncompiler
+Version: 1.0
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.optioncompiler_1.0_iphoneos-arm.deb
+Size: 1184
+MD5sum: 64b6e7a761dda16278dae6e2dece3aea
+Description: Turn multiple scripts or commands into one easy to use bash script with custom options. Run optioncompiler in terminal.
+Name: Option Compiler
+
+Package: com.srfjr18.repomanager
+Version: 1.4.5
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: curl, coreutils, com.srfjr18.scanpackages, org.coolstar.perl, git, wget, org.thebigboss.cacerts, grep, sed, expat
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.repomanager_1.4.5_iphoneos-arm.deb
+Size: 2322
+MD5sum: 8df9885113ea555fca8dbca1fd20f0b4
+Description: Make your own Cydia repo and easily manage it using this script! Run repo in terminal for help.
+Name: Repo Manager
+
+Package: com.srfjr18.repomanager
+Version: 1.5
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: curl, coreutils, com.srfjr18.scanpackages, org.coolstar.perl, git, wget, org.thebigboss.cacerts, grep, sed, expat
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.repomanager_1.5_iphoneos-arm.deb
+Size: 2308
+MD5sum: 038eb2d85fae7fb69a393c048e700841
+Description: Make your own Cydia repo and easily manage it using this script! Run repo in terminal for help.
+Name: Repo Manager
+
+Package: com.srfjr18.scanpackages
+Version: 1.1
+Section: Development
+Maintainer: None <notarealemail@gmail.com>
+Depends: org.coolstar.perl
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.scanpackages_1.1_iphoneos-arm.deb
+Size: 4100
+MD5sum: eda1bec61917fa2cadcdd429d4df0c08
+Description: dpkg-scanpackages for iOS. Requires perl from Coolstar's repo. **Credit to Saurik for the actual dpkg-scanpackages file, I just made it into an easy to install deb, and included some other files to actually make it work**
+Name: dpkg-scanpackages
+
