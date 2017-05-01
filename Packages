@@ -1,13 +1,13 @@
 Package: com.srfjr18.appduplicator
-Version: 1.1.1
+Version: 1.2.1
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.appduplicator_1.1.1_iphoneos-arm.deb
-Size: 2038
-MD5sum: bd5de050f2df49db34767fb607c4cc6d
-Description: Run duplicate in terminal to duplicate any app you currently have installed. Issues with this script: Apps have to be duplicated to /Applications. As a result, space in the root partition is used. A symlink method similar to coolstar's stashing is used to minimize space used. However, for many apps, the CFBundleExecutable file is large in size. This file cannot be symlinked. Also, some duplicated apps may crash. Lastly, keep in mind deleting original app will break the duplicate app due to the symlink system.
+Filename: ./com.srfjr18.appduplicator_1.2.1_iphoneos-arm.deb
+Size: 2210
+MD5sum: 4564fc470e3a423466d668051d496c2b
+Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
 Name: App Duplicator
 
 Package: com.srfjr18.appduplicator
