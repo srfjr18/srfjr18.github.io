@@ -10,6 +10,18 @@ MD5sum: bd5de050f2df49db34767fb607c4cc6d
 Description: Run duplicate in terminal to duplicate any app you currently have installed. Issues with this script: Apps have to be duplicated to /Applications. As a result, space in the root partition is used. A symlink method similar to coolstar's stashing is used to minimize space used. However, for many apps, the CFBundleExecutable file is large in size. This file cannot be symlinked. Also, some duplicated apps may crash. Lastly, keep in mind deleting original app will break the duplicate app due to the symlink system.
 Name: App Duplicator
 
+Package: com.srfjr18.appduplicator
+Version: 1.2
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: com.ericasadun.utilities, sed, grep, coreutils
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.appduplicator_1.2_iphoneos-arm.deb
+Size: 2164
+MD5sum: 18b60178068159af91455c8b90d40e74
+Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
+Name: App Duplicator
+
 Package: com.srfjr18.bashcasino
 Version: 1.1.3
 Section: Games
@@ -45,17 +57,17 @@ MD5sum: a59c015721fed26e0e1a392c73b5723b
 Description: Modified weather iWidget from the M2 pack.
 Name: Custom M2 iWidgets
 
-Package: com.srfjr18.ipabuilder
-Version: 1.1
+Package: com.srfjr18.oldappduplicator
+Version: 1.1.1
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
-Depends: coreutils
+Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.ipabuilder_1.1_iphoneos-arm.deb
-Size: 1016
-MD5sum: 7c3734e364b8496212664cf3ce3e95f2
-Description: Creates .ipa files from .app bundles. Place your .app bundles into /var/mobile/ipa, then run ipabuild in terminal. These IPA files can be sideloaded with impactor or installed with appsync.
-Name: IPA Builder
+Filename: ./com.srfjr18.oldappduplicator_1.1.1_iphoneos-arm.deb
+Size: 2140
+MD5sum: 9783fc7f2cfc2ad3491a316dfb22e91b
+Description: THIS PACKAGE IS NOT OBSOLETE AS MY NEWER APP DUPLICATOR PACKAGE USES A MUCH MORE EFFECTIVE OPTION. Run oldduplicate in terminal to duplicate any app you currently have installed. Issues with this script: Apps have to be duplicated to /Applications. As a result, space in the root partition is used. A symlink method similar to coolstar's stashing is used to minimize space used. However, for many apps, the CFBundleExecutable file is large in size. This file cannot be symlinked. Also, some duplicated apps may crash. Lastly, keep in mind deleting original app will break the duplicate app due to the symlink system.
+Name: App Duplicator (Obsolete)
 
 Package: com.srfjr18.optioncompiler
 Version: 1.0
