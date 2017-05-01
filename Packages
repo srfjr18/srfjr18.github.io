@@ -11,14 +11,14 @@ Description: Run duplicate in terminal to duplicate any app you currently have i
 Name: App Duplicator
 
 Package: com.srfjr18.appduplicator
-Version: 1.2
+Version: 1.2.2
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.appduplicator_1.2_iphoneos-arm.deb
-Size: 2164
-MD5sum: 18b60178068159af91455c8b90d40e74
+Filename: ./com.srfjr18.appduplicator_1.2.2_iphoneos-arm.deb
+Size: 2234
+MD5sum: 064fa1004d7ce1a8f3a1e85b896da9d3
 Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
 Name: App Duplicator
 
