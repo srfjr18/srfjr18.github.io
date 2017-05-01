@@ -64,9 +64,9 @@ Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
 Filename: ./com.srfjr18.oldappduplicator_1.1.1_iphoneos-arm.deb
-Size: 2140
-MD5sum: 9783fc7f2cfc2ad3491a316dfb22e91b
-Description: THIS PACKAGE IS NOT OBSOLETE AS MY NEWER APP DUPLICATOR PACKAGE USES A MUCH MORE EFFECTIVE OPTION. Run oldduplicate in terminal to duplicate any app you currently have installed. Issues with this script: Apps have to be duplicated to /Applications. As a result, space in the root partition is used. A symlink method similar to coolstar's stashing is used to minimize space used. However, for many apps, the CFBundleExecutable file is large in size. This file cannot be symlinked. Also, some duplicated apps may crash. Lastly, keep in mind deleting original app will break the duplicate app due to the symlink system.
+Size: 2144
+MD5sum: 18d3ddd83866db67fcbc0e62064cf31c
+Description: THIS PACKAGE IS NOW OBSOLETE AS MY NEWER APP DUPLICATOR PACKAGE USES A MUCH MORE EFFECTIVE OPTION. Run oldduplicate in terminal to duplicate any app you currently have installed. Issues with this script: Apps have to be duplicated to /Applications. As a result, space in the root partition is used. A symlink method similar to coolstar's stashing is used to minimize space used. However, for many apps, the CFBundleExecutable file is large in size. This file cannot be symlinked. Also, some duplicated apps may crash. Lastly, keep in mind deleting original app will break the duplicate app due to the symlink system.
 Name: App Duplicator (Obsolete)
 
 Package: com.srfjr18.optioncompiler
