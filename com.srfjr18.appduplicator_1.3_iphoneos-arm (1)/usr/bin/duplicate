@@ -1,0 +1,170 @@
+#!/bin/bash
+
+function checkchoice {
+if ! [ "$choice" -eq "$choice" ] &>/dev/null ; then
+echo "Please choose a number between 1 and $num"
+exit 1 ; fi
+
+if [[ $choice -gt $num ]] || [[ $choice -lt '1' ]] ; then
+echo "Please choose a number between 1 and $num"
+exit 1 ; fi
+
+check1=${id[$choice]}
+check2=${check1/.duplicate/}
+if cat /var/temp | grep -q $check1 ; then
+sed -i "0,/${id[$choice]}/s///" /var/temp
+if cat /var/temp | grep -q $check1 ; then
+echo "Can't duplicate the same app twice"
+rm -rf /var/temp
+exit 1 ; fi ; fi
+
+if cat /var/temp | grep -q $check2 ; then
+echo "Can't duplicate the same app twice"
+rm -rf /var/temp 
+exit 1 ; fi
+rm -rf /var/temp
+}
+
+if [[ $EUID -ne 0 ]] ; then
+echo "Please run this script as root" 
+exit 1 ; fi
+
+remove=$1
+case $remove in
+-r|--remove )
+OIFS="$IFS"
+IFS=$'\n'
+for f in $(cd /var/containers/Bundle/Application
+ls -d */) ; do
+OIFS="$IFS"
+IFS=$'\n'
+for s in $(cd /var/containers/Bundle/Application/"$f"
+ls -d */) ; do
+dn=$(plutil -key CFBundleName /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+
+id=$(plutil -key CFBundleIdentifier /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+if echo "$id" | grep -q "duplicate" ; then
+for d in $(cd /var/mobile/Containers/Data/Application
+ls -d */) ; do
+dt=$(plutil -key MCMMetadataIdentifier /var/mobile/Containers/Data/Application/"$d"/.com.apple.mobile_container_manager.metadata.plist)
+if echo "$dt" | grep -q "$id" ; then
+num=$(($num+1))
+echo "$num. $dn ($id)" 
+dir[$num]=/var/containers/Bundle/Application/"$f"
+name[$num]=$dn
+id[$num]=$id 
+data[$num]=/var/mobile/Containers/Data/Application/"$d" ; fi
+done ; fi
+done
+done
+
+if [[ $num -eq '0' ]] ; then
+echo "No duplicated apps installed"
+echo "Exiting"
+exit 1 ; fi
+
+read -p "Which app would you like to delete? (Please choose a number) " choice 
+checkchoice
+echo "Deleting ${name[$choice]}..."
+if [ -d ${dir[$choice]} ] ; then
+echo "Deleting ${dir[$choice]}..."
+rm -rf ${dir[$choice]} 
+echo "Done" ; fi
+if [ -d ${data[$choice]} ] ; then
+echo "Deleting ${data[$choice]}..."
+rm -rf ${data[$choice]} 
+echo "Done" ; fi
+cd /var/mobile/Library/duplicaterm
+echo "Running uicache..."
+uicache
+echo "Done. ${name[$choice]} deleted"
+exit 1
+;;
+esac
+
+OIFS="$IFS"
+IFS=$'\n'
+for f in $(cd /var/containers/Bundle/Application
+ls -d */) ; do
+OIFS="$IFS"
+IFS=$'\n'
+for s in $(cd /var/containers/Bundle/Application/"$f"
+ls -d */) ; do
+num=$(($num+1))
+dn=$(plutil -key CFBundleName /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+id=$(plutil -key CFBundleIdentifier /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+echo "$num. $dn ($id)"
+echo "$id" >> /var/temp
+app[$num]=/var/containers/Bundle/Application/"$f""$s"
+dir[$num]="/var/containers/Bundle/Application/"$f""
+name[$num]=$dn
+id[$num]=$id
+bundle[$num]=${s%?}
+
+done
+done
+
+read -p "Which app would you like to duplicate? (Please choose a number) " choice 
+checkchoice
+dupchoice=$choice
+
+if cat /var/mobile/Library/duplicaterm/dupname | grep -q "${name[$dupchoice]}" ; then
+echo "Cannot duplicate the same app twice"
+exit 1 ; fi
+
+read -p "Which app would you like to overwrite in duplication? (Please choose a number) " choice
+checkchoice
+ovrchoice=$choice
+
+if [ $dupchoice -eq $ovrchoice ] ; then
+echo "Cannot overwrite application you are duplicating"
+exit 1 ; fi
+
+read -p "Proceeding will erase all data for ${name[$ovrchoice]}. Are you sure you would like to proceed? (y/n) " yn
+case $yn in 
+y|Y|yes|Yes )
+echo "Duplicating ${name[$dupchoice]}..."
+;;
+n|N|no|No )
+echo "Exiting"
+exit 1
+;;
+* )
+echo "Please choose yes or no"
+echo "Exiting"
+exit 1
+;;
+esac
+
+echo "Copying ${bundle[$dupchoice]} to ${dir[$ovrchoice]}..."
+cp -R ${app[$dupchoice]} ${dir[$ovrchoice]}
+echo "Done"
+
+cd ${dir[$ovrchoice]}
+echo "Deleting ${bundle[$ovrchoice]}..."
+rm -rf ${bundle[ovrchoice]}
+echo "Done"
+
+echo "Renaming ${bundle[$dupchoice]} to ${bundle[$ovrchoice]}..."
+mv ${dir[$ovrchoice]}${bundle[$dupchoice]} ${dir[$ovrchoice]}${bundle[ovrchoice]}
+echo "Done"
+
+echo "Changing CFBundleIdentifier from ${id[$dupchoice]} to ${id[$dupchoice]}.duplicate..."
+cd ${app[$ovrchoice]}
+cat Info.plist > Info.plist.temp
+sed -i "s/${id[$dupchoice]}/${id[$dupchoice]}.duplicate/g" Info.plist
+
+if cat ${app[$ovrchoice]}/Info.plist | grep -q "bplist" ; then
+rm -rf ${app[$ovrchoice]}/Info.plist
+mv ${app[$ovrchoice]}/Info.plist.temp ${app[$ovrchoice]}/Info.plist
+echo "Error: cannot edit Info.plist" 
+read -p "Please navigate to ${app[$ovrchoice]}, and edit the Info.plist file. (You can use a file managers such as iFile or Filza) Look for ${id[$dupchoice]} under CFBundleIdentifier, and replace it with ${id[$dupchoice]}.duplicate. Failing to do so will cause the application to not appear on your SpringBoard. Press return to continue "
+echo "Continuing..." ; fi
+rm -rf Info.plist.temp
+echo "Done"
+
+echo "Running uicache..."
+uicache
+echo "Done. ${name[dupchoice]} duplicated"
+echo "${name[dupchoice]} cannot be removed from the homescreen. Please run 'duplicate --remove' or 'duplicate -r' to remove it"
+exit 1
