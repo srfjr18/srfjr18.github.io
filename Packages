@@ -17,9 +17,9 @@ Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
 Filename: ./com.srfjr18.appduplicatorr_1.3.3_iphoneos-arm.deb
-Size: 2274
-MD5sum: ba5b6472ee6793f6d7e3147c7150f082
-Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
+Size: 2272
+MD5sum: d922103cbc6c7138919775cef647fb2b
+Description: Run rduplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'rduplicate --remove'. Deleting from the home screen will hide icon and nothing else
 Name: App Duplicator (App Replace Method)
 
 Package: com.srfjr18.bashcasino
