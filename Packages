@@ -1,50 +1,26 @@
 Package: com.srfjr18.appduplicator
-Version: 1.3.1
+Version: 1.3.4
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.appduplicator_1.3.1_iphoneos-arm.deb
-Size: 2252
-MD5sum: 4342095ad72661983f6219a6a8ce35cd
-Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
+Filename: ./com.srfjr18.appduplicator_1.3.4_iphoneos-arm.deb
+Size: 3784
+MD5sum: ce66e637f9ba3ba7015cf8e8ea0fe2e4
+Description: Run duplicate in terminal to duplicate any app you currently have installed. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
 Name: App Duplicator
 
-Package: com.srfjr18.appduplicator
-Version: 1.3.2
-Section: Utilities
-Maintainer: srfjr18 <srfjr18@gmail.com>
-Depends: com.ericasadun.utilities, sed, grep, coreutils
-Architecture: iphoneos-arm
-Filename: ./com.srfjr18.appduplicator_1.3.2_iphoneos-arm.deb
-Size: 2256
-MD5sum: 53662c1fad7853f1838a987eae231552
-Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
-Name: App Duplicator
-
-Package: com.srfjr18.appduplicator
+Package: com.srfjr18.appduplicatorr
 Version: 1.3.3
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: com.ericasadun.utilities, sed, grep, coreutils
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.appduplicator_1.3.3_iphoneos-arm.deb
-Size: 2252
-MD5sum: 1711941ee643deb66a418bcd9e065d03
+Filename: ./com.srfjr18.appduplicatorr_1.3.3_iphoneos-arm.deb
+Size: 2274
+MD5sum: ba5b6472ee6793f6d7e3147c7150f082
 Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
-Name: App Duplicator
-
-Package: com.srfjr18.appduplicator
-Version: 1.3
-Section: Utilities
-Maintainer: srfjr18 <srfjr18@gmail.com>
-Depends: com.ericasadun.utilities, sed, grep, coreutils
-Architecture: iphoneos-arm
-Filename: ./com.srfjr18.appduplicator_1.3_iphoneos-arm.deb
-Size: 2166
-MD5sum: 03be8b8b1acc85d73c27bf50d2a9834d
-Description: Run duplicate in terminal to duplicate any app you currently have installed. Unfortunately, you will have to replace a currently installed app with your duplicated app. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
-Name: App Duplicator
+Name: App Duplicator (App Replace Method)
 
 Package: com.srfjr18.bashcasino
 Version: 1.1.3
