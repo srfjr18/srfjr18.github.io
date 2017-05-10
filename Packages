@@ -140,3 +140,15 @@ MD5sum: eda1bec61917fa2cadcdd429d4df0c08
 Description: dpkg-scanpackages for iOS. Requires perl from Coolstar's repo. **Credit to Saurik for the actual dpkg-scanpackages file, I just made it into an easy to install deb, and included some other files to actually make it work**
 Name: dpkg-scanpackages
 
+Package: com.srfjr18.timevibrate
+Version: 1.0
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: libactivator
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.timevibrate_1.0_iphoneos-arm.deb
+Size: 946
+MD5sum: 73f29c49a0bcd9c317fc0014eeaff352
+Description: Vibrates your device the current time. (Example: if the time was 3:57, your device would vibrate 3 times, pause 3 seconds, then vibrate 5 times, pause 1 second, then vibrate 7 times). I recommend building an activator run command action, and setting the command to "timevibrate"
+Name: Time Vibrate
+
