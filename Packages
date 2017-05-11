@@ -81,6 +81,17 @@ MD5sum: a59c015721fed26e0e1a392c73b5723b
 Description: Modified weather iWidget from the M2 pack.
 Name: Custom M2 iWidgets
 
+Package: com.srfjr18.ipabuilder
+Version: 1.0
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.ipabuilder_1.0_iphoneos-arm.deb
+Size: 1050
+MD5sum: edee645d1157b1b9db82d451d24042a4
+Description: Place .app bundles in /var/ipa, then run ipabuild in terminal to make IPAs that are installable with appsync pr Cydia Impactor.
+Name: IPA Builder
+
 Package: com.srfjr18.oldappduplicator
 Version: 1.1.1
 Section: Utilities
