@@ -163,6 +163,17 @@ Description: A complete rewrite of my first ever bash script, setupmanager. This
 Name: Setup Manager
 
 Package: com.srfjr18.smrewrite
+Version: 1.0.2
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.smrewrite_1.0.2_iphoneos-arm.deb
+Size: 2004
+MD5sum: c7061e0d8bc7835330f004e4eb2aae83
+Description: A complete rewrite of my first ever bash script, setupmanager. This script is a lot more dynamic, as you can backup any tweak's preferences into your setup. Run sm in terminal for options.
+Name: Setup Manager
+
+Package: com.srfjr18.smrewrite
 Version: 1.0
 Section: Utilities
 Maintainer: srfjr18 <srfjr18@gmail.com>
