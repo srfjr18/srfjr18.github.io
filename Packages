@@ -195,6 +195,17 @@ MD5sum: aceb28d38b76741b82013ec5d1dadce7
 Description: A complete rewrite of my first ever bash script, setupmanager. This script is a lot more dynamic, as you can backup any tweak's preferences into your setup. Run sm in terminal for options.
 Name: Setup Manager
 
+Package: com.srfjr18.smrewrite
+Version: 1.0.6
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.smrewrite_1.0.6_iphoneos-arm.deb
+Size: 2104
+MD5sum: 7a77ec14b7ad40fb70084c98babd560d
+Description: A complete rewrite of my first ever bash script, setupmanager. This script is a lot more dynamic, as you can backup any tweak's preferences into your setup. Run sm in terminal for options.
+Name: Setup Manager
+
 Package: com.srfjr18.timevibrate
 Version: 1.0.2
 Section: Utilities
