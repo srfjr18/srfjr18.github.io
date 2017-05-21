@@ -115,6 +115,17 @@ MD5sum: 64b6e7a761dda16278dae6e2dece3aea
 Description: Turn multiple scripts or commands into one easy to use bash script with custom options. Run optioncompiler in terminal.
 Name: Option Compiler
 
+Package: com.srfjr18.pythonfm
+Version: 1.0
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.pythonfm_1.0_iphoneos-arm.deb
+Size: 2426
+MD5sum: da7df6cf17285fbd1193ccd8d95cfd99
+Description: Barebones file manager script written in Python. Install Python for iOS then run filemanager.py in terminal.
+Name: Python File Manager
+
 Package: com.srfjr18.repomanager
 Version: 1.5.2
 Section: Utilities
