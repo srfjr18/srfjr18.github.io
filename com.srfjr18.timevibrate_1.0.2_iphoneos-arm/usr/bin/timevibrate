@@ -1,0 +1,31 @@
+#!/bin/bash
+clock=$(date +"%r")
+hours=${clock:0:2}
+minutes1=${clock:3:1}
+minutes2=${clock:4:1}
+if [[ $hours = [0]* ]] ; then
+hours=${clock:1:1} ; fi
+
+if [[ $minutes2 = [0]* ]] ; then
+minutes2=${clock:5:1} ; fi
+
+n=0
+while (( n++ < $hours )) ; do 
+activator send libactivator.system.vibrate
+sleep 0.5
+done
+sleep 3
+
+n=0
+while (( n++ < $minutes1 )) ; do 
+activator send libactivator.system.vibrate
+sleep 0.5
+done
+
+sleep 1
+
+n=0
+while (( n++ < $minutes2 )) ; do 
+activator send libactivator.system.vibrate
+sleep 0.5
+done
