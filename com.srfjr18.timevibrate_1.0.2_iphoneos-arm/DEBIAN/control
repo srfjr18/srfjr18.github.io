@@ -1,8 +1,0 @@
-Package: com.srfjr18.timevibrate
-Name: Time Vibrate
-Version: 1.0.2
-Section: Utilities
-Maintainer: srfjr18 <srfjr18@gmail.com>
-Depends: libactivator
-Architecture: iphoneos-arm
-Description: Vibrates your device the current time. (Example: if the time was 3:57, your device would vibrate 3 times, pause 3 seconds, then vibrate 5 times, pause 1 second, then vibrate 7 times). I recommend building an activator run command action, and setting the command to "timevibrate"
