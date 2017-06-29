@@ -128,14 +128,14 @@ Description: Full featured Mario game written in Python. Currently, the UI and c
 Name: Python Mario
 
 Package: com.srfjr18.pythonmario
-Version: 1.1.5
-Section: Utilities
+Version: 1.1.6
+Section: Games
 Maintainer: srfjr18 <srfjr18@gmail.com>
 Depends: libactivator
 Architecture: iphoneos-arm
-Filename: ./com.srfjr18.pythonmario_1.1.5_iphoneos-arm.deb
-Size: 1608576
-MD5sum: 26dd9d97d95b2e81855a3733774d0dd7
+Filename: ./com.srfjr18.pythonmario_1.1.6_iphoneos-arm.deb
+Size: 1608552
+MD5sum: be9b7ccc26fde867ca79e1388f1d1325
 Description: Full featured Mario game written in Python. Currently, works best on the iPhone 5s resolution, but has basic decent support for all resolutions. Requires Python 2.7, but I didn't make it a dependency because there's many packages for it on iOS. Installs a modified mterminal application that automatically runs my script.
 Name: Python Mario
 
