@@ -34,6 +34,18 @@ MD5sum: cabbc0bd83b59dc34847e59350f13a49
 Description: Run duplicate in terminal to duplicate any app you currently have installed. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
 Name: App Duplicator
 
+Package: com.srfjr18.appduplicator
+Version: 1.3.7
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: com.ericasadun.utilities, sed, grep, coreutils, wget
+Architecture: iphoneos-arm
+Filename: ./com.srfjr18.appduplicator_1.3.7_iphoneos-arm.deb
+Size: 3830
+MD5sum: d6c3fc39fb4b24417127cd964dcd928d
+Description: Run duplicate in terminal to duplicate any app you currently have installed. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else
+Name: App Duplicator
+
 Package: com.srfjr18.appduplicatorr
 Version: 1.3.3
 Section: Utilities
