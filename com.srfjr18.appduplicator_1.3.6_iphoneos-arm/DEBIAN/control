@@ -1,0 +1,8 @@
+Package: com.srfjr18.appduplicator
+Name: App Duplicator
+Version: 1.3.6
+Section: Utilities
+Maintainer: srfjr18 <srfjr18@gmail.com>
+Depends: com.ericasadun.utilities, sed, grep, coreutils, wget
+Architecture: iphoneos-arm
+Description: Run duplicate in terminal to duplicate any app you currently have installed. Duplicated apps must be removed with 'duplicate --remove'. Deleting from the home screen will hide icon and nothing else

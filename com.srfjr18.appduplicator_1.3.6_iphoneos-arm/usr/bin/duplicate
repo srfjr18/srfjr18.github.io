@@ -1,0 +1,418 @@
+#!/bin/bash
+
+function checkchoice {
+if ! [ "$choice" -eq "$choice" ] &>/dev/null ; then
+echo "Please choose a number between 1 and $num"
+rm -rf /var/temp
+echo "Exiting..."
+if [ -d $tempdir ] ; then
+rm -rf $tempdir
+uicache
+exit 1 ; fi
+exit 1 ; fi
+
+if [[ $choice -gt $num ]] || [[ $choice -lt '1' ]] ; then
+echo "Please choose a number between 1 and $num"
+rm -rf /var/temp
+echo "Exiting..."
+if [ -d $tempdir ] ; then
+rm -rf $tempdir
+uicache
+exit 1 ; fi
+exit 1 ; fi
+
+rm -rf /var/temp
+}
+
+if [[ $EUID -ne 0 ]] ; then
+echo "Please run this script as root" 
+exit 1 ; fi
+
+if ! [ -f /var/mobile/Documents/temp.ipa ] ; then
+wget -q --spider http://google.com
+if ! [ $? -eq 0 ] ; then
+echo "Internet connection required to download temporary IPA" 
+exit 1 ; fi
+echo "Downloading temporary IPA for duplication..."
+wget -O /var/mobile/Documents/temp.ipa https://github.com/srfjr18
+echo "Done" ; fi
+
+remove=$1
+case $remove in
+-r|--remove )
+echo "Duplicated Apps:"
+OIFS="$IFS"
+IFS=$'\n'
+for f in $(cd /var/containers/Bundle/Application
+ls -d */) ; do
+OIFS="$IFS"
+IFS=$'\n'
+for s in $(cd /var/containers/Bundle/Application/"$f"
+ls -d */) ; do
+dn=$(plutil -key CFBundleName /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+
+id=$(plutil -key CFBundleIdentifier /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+
+n=10
+id2=${id:${#id} - $n}
+if [ "$id2" -eq "$id2" ] &>/dev/null ; then
+
+for d in $(cd /var/mobile/Containers/Data/Application
+ls -d */) ; do
+dt=$(plutil -key MCMMetadataIdentifier /var/mobile/Containers/Data/Application/"$d"/.com.apple.mobile_container_manager.metadata.plist)
+if echo "$dt" | grep -q "$id" ; then
+num=$(($num+1))
+echo "$num. $dn ($id)" 
+dir[$num]=/var/containers/Bundle/Application/"$f"
+name[$num]=$dn
+id[$num]=$id 
+data[$num]=/var/mobile/Containers/Data/Application/"$d" ; fi
+done ; fi
+done
+done
+
+num=$(($num+1))
+echo "$num. Exit"
+
+read -p "Which app would you like to delete? (Please choose a number) " choice 
+
+if [ "$choice" = "$num" ] ; then
+echo "Exiting..."
+exit 1 ; fi
+checkchoice
+
+echo "Deleting ${name[$choice]}..."
+if [ -d ${dir[$choice]} ] ; then
+echo "Deleting ${dir[$choice]}..."
+rm -rf ${dir[$choice]} 
+echo "Done" ; fi
+if [ -d ${data[$choice]} ] ; then
+echo "Deleting ${data[$choice]}..."
+rm -rf ${data[$choice]} 
+echo "Done" ; fi
+cd /var/mobile/Library/duplicaterm
+echo "Running uicache..."
+uicache
+echo "Done. ${name[$choice]} deleted"
+exit 1
+;;
+esac
+
+echo "Installing temporary IPA..."
+cd /var/mobile/Documents
+unzip -o temp.ipa &> /dev/null
+until [ ${#random} = '10' ] ; do
+rand=$(( ( RANDOM % 9 )  + 1 ))
+random="$random$rand"
+done
+
+#The reason for this part of the file is that using sed converts the whole Info.plist file to bplist for non App Store apps, and I have no idea why.
+echo "<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BuildMachineOSBuild</key>
+	<string>13E28</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>BarMagnet</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeName</key>
+			<string>Torrent File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.bittorrent.torrent</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>BarMagnet</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon29x29.png</string>
+				<string>AppIcon29x29@2x.png</string>
+				<string>AppIcon40x40@2x.png</string>
+				<string>AppIcon57x57.png</string>
+				<string>AppIcon57x57@2x.png</string>
+				<string>AppIcon60x60@2x.png</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon29x29.png</string>
+				<string>AppIcon29x29@2x.png</string>
+				<string>AppIcon40x40@2x.png</string>
+				<string>AppIcon57x57.png</string>
+				<string>AppIcon57x57@2x.png</string>
+				<string>AppIcon60x60@2x.png</string>
+				<string>AppIcon29x29~ipad.png</string>
+				<string>AppIcon29x29@2x~ipad.png</string>
+				<string>AppIcon40x40~ipad.png</string>
+				<string>AppIcon40x40@2x~ipad.png</string>
+				<string>AppIcon50x50~ipad.png</string>
+				<string>AppIcon50x50@2x~ipad.png</string>
+				<string>AppIcon72x72~ipad.png</string>
+				<string>AppIcon72x72@2x~ipad.png</string>
+				<string>AppIcon76x76~ipad.png</string>
+				<string>AppIcon76x76@2x~ipad.png</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>CFBundleIdentifier</key>
+	<string>$random</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>BarMagnet</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.8</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>iPhoneOS</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>magnet</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>magnet</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>DTCompiler</key>
+	<string>com.apple.compilers.llvm.clang.1_0</string>
+	<key>DTPlatformBuild</key>
+	<string>11D167</string>
+	<key>DTPlatformName</key>
+	<string>iphoneos</string>
+	<key>DTPlatformVersion</key>
+	<string>7.1</string>
+	<key>DTSDKBuild</key>
+	<string>11D167</string>
+	<key>DTSDKName</key>
+	<string>iphoneos7.1</string>
+	<key>DTXcode</key>
+	<string>0511</string>
+	<key>DTXcodeBuild</key>
+	<string>5B1008</string>
+	<key>Default New Server</key>
+	<string>SeedStuff Seedbox</string>
+	<key>Email Address</key>
+	<string>mailto:carlo.tortorella@me.com?subject=BarMagnet%20</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>5.1.1</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UILaunchImageFile</key>
+	<string>LaunchImage</string>
+	<key>UILaunchImages</key>
+	<array>
+		<dict>
+			<key>UILaunchImageMinimumOSVersion</key>
+			<string>7.0</string>
+			<key>UILaunchImageName</key>
+			<string>LaunchImage-700</string>
+			<key>UILaunchImageOrientation</key>
+			<string>Portrait</string>
+			<key>UILaunchImageSize</key>
+			<string>{320, 480}</string>
+		</dict>
+		<dict>
+			<key>UILaunchImageMinimumOSVersion</key>
+			<string>7.0</string>
+			<key>UILaunchImageName</key>
+			<string>LaunchImage-700-568h</string>
+			<key>UILaunchImageOrientation</key>
+			<string>Portrait</string>
+			<key>UILaunchImageSize</key>
+			<string>{320, 568}</string>
+		</dict>
+	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>MainStoryboard_iPhone</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>MainStoryboard_iPad</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIStatusBarHidden</key>
+	<false/>
+	<key>UIStatusBarHidden~ipad</key>
+	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UIStatusBarTintParameters</key>
+	<dict>
+		<key>UINavigationBar</key>
+		<dict>
+			<key>Style</key>
+			<string>UIBarStyleDefault</string>
+			<key>Translucent</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Torrent File</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.bittorrent.torrent</string>
+			<key>public.filename-extension</key>
+			<string>torrent</string>
+			<key>public.mime-type</key>
+			<string>application/x-bittorrent</string>
+		</dict>
+	</array>
+</dict>
+</plist>" > /var/mobile/Documents/Payload/BarMagnet.app/Info.plist
+
+zip -r temp1.ipa Payload &> /dev/null
+ipainstaller /var/mobile/Documents/temp1.ipa &> /dev/null
+rm -rf /var/mobile/Documents/temp1.ipa
+rm -rf /var/mobile/Documents/__MACOSX
+rm -rf /var/mobile/Documents/Payload
+echo "Done"
+
+echo "Installed Apps:"
+OIFS="$IFS"
+IFS=$'\n'
+for f in $(cd /var/containers/Bundle/Application
+ls -d */) ; do
+OIFS="$IFS"
+IFS=$'\n'
+for s in $(cd /var/containers/Bundle/Application/"$f"
+ls -d */) ; do
+dn=$(plutil -key CFBundleName /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+id=$(plutil -key CFBundleIdentifier /var/containers/Bundle/Application/"$f"/"$s"/Info.plist)
+
+if [ "$id" = "$random" ] ; then
+tempdir="/var/containers/Bundle/Application/"$f""
+tempapp=/var/containers/Bundle/Application/"$f""$s"
+tempbundle=${s%?} ; else
+n=10
+id2=${id:${#id} - $n}
+if ! [ "$id2" -eq "$id2" ] &>/dev/null ; then
+num=$(($num+1))
+echo "$num. $dn ($id)"
+echo "$id" >> /var/temp
+app[$num]=/var/containers/Bundle/Application/"$f""$s"
+dir[$num]="/var/containers/Bundle/Application/"$f""
+name[$num]=$dn
+id[$num]=$id
+bundle[$num]=${s%?} ; fi ; fi
+
+done
+done
+
+num=$(($num+1))
+echo "$num. Exit"
+
+read -p "Which app would you like to duplicate? (Please choose a number) " choice 
+
+if [ "$choice" = "$num" ] ; then
+echo "Exiting..."
+rm -rf $tempdir
+uicache
+exit 1 ; fi
+
+checkchoice
+dupchoice=$choice
+
+if cat /var/mobile/Library/duplicaterm/dupname | grep -q "${name[$dupchoice]}" ; then
+echo "Cannot duplicate the same app twice"
+exit 1 ; fi
+
+echo "Duplicating ${name[$dupchoice]}..."
+
+echo "Copying ${bundle[$dupchoice]} to $tempdir"
+cp -R ${app[$dupchoice]} $tempdir
+echo "Done"
+
+echo "Deleting $tempapp..."
+rm -rf $tempapp
+echo "Done"
+
+echo "Renaming ${bundle[$dupchoice]} to $tempbundle..."
+mv $tempdir${bundle[$dupchoice]} $tempdir$tempbundle
+echo "Done"
+
+echo "Changing CFBundleIdentifier from ${id[$dupchoice]} to ${id[$dupchoice]}.$random..."
+cd $tempapp
+cat Info.plist > Info.plist.temp
+sed -i "s/${id[$dupchoice]}/${id[$dupchoice]}.$random/g" Info.plist
+
+#Another problem because of bplist. This at least serves as somewhat of a fix
+if cat $tempapp/Info.plist | grep -q "bplist" ; then
+rm -rf $tempapp/Info.plist
+mv $tempapp/Info.plist.temp $tempapp/Info.plist
+echo "Error: cannot edit Info.plist" 
+read -p "Please navigate to $tempapp, and edit the Info.plist file. (You can use a file managers such as iFile or Filza) Look for ${id[$dupchoice]} under CFBundleIdentifier, and replace it with ${id[$dupchoice]}.$random. Failing to do so will cause the application to not appear on your SpringBoard. Press return to continue "
+echo "Continuing..." ; fi
+rm -rf Info.plist.temp
+echo "Done"
+
+echo "Running uicache..."
+uicache
+echo "Done. ${name[dupchoice]} duplicated"
+echo "${name[dupchoice]} cannot be removed from the homescreen. Please run 'duplicate --remove' or 'duplicate -r' to remove it"
+exit 1
